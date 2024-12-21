@@ -71,7 +71,7 @@ const NewsComponent = () => {
         <div
           className={`${
             theme === "light" ? "bg-black" : "bg-black "
-          } flex z-10 flex-col-reverse text-white sticky top-24 sl:top-16 pt-4 pb-1 pr-3 `}
+          } flex z-10 flex-col-reverse text-white sticky top-24 sl:top-20 md:top-16 pt-4 pb-1 pr-3 `}
         >
           <div className="flex justify-between">
             <div className="p-2  ml-2 mr-2 flex md:overflow-visible overflow-scroll gap-3">
@@ -183,9 +183,12 @@ const NewsComponent = () => {
                       View full article
                     </Link> */}
                     <div className="flex justify-start gap-1 sm:gap-5 md:gap-10 mb-0 mb-0">
-                      <p>
+                      <p className=" text-sm font-bold sm:text-md sl:text-lg">
                         Author:
-                        <strong className="md:contents hidden">
+                        <span className=" font-extralight text-md md:contents hidden">
+                          {news.author || "Unknown"}
+                        </span>
+                        <strong className="font-extralight text-sm sm:text-md sl:text-lg ">
                           {news.author || "Unknown"}
                         </strong>
                       </p>

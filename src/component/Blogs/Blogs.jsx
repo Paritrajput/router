@@ -74,7 +74,7 @@ const Blogs = () => {
 
   return (
     <div>
-      <div className="flex p-1 sm:p-3 pt-3 justify-between flex-col sm:flex-row  sticky top-20 shadow z-10 bg-black text-white">
+      <div className="flex p-1 sm:p-3 pt-3 justify-between flex-col sm:flex-row  sticky top-20 md:top-16 md:pt-5 lg:top-16 sm:top-24 shadow z-10 bg-black text-white">
         <div className="font-bold text-2xl mr-2 mb-2 sm:text-3xl md:text-4xl ">
           Blogs
         </div>

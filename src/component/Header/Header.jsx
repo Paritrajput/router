@@ -49,22 +49,22 @@ export default function Header() {
       <nav
         className={`${
           theme === "light" ? "bg-white text-black" : "bg-black text-white"
-        } border-gray-200 sm:px-1 h-24 md:h-auto py-2.5`}
+        } border-gray-200 sm:px-1 h-24 md:h-auto pt-1.5 pb-2 sm:py-2.5`}
       >
         <div className="md:flex h-full justify-between  items-center mx-auto max-w-screen-2xl">
-          <div className="absolute  md:relative top-2 left-2">
+          <div className="absolute pt-1 md:pt-0 md:relative top-2 md:top-1 left-2">
             <img
               src="logo_newBase.png"
-              className="mr-3 h-12 md:h-16"
+              className="mr-3 h-8 sm:h-10 md:h-12"
               alt="Logo"
             />
           </div>
 
           <div
-            className="flex w-full md:w-fit md:justify-between items-end h-full md:items-center  "
+            className="flex w-full md:w-auto md:justify-between items-end h-full md:items-center  "
             id="mobile-menu-2"
           >
-            <ul className="flex justify-evenly mt-4 w-full items-end md:items-center font-medium gap-2 lg:space-x-8 lg:mt-0">
+            <ul className="flex justify-evenly mt-4 w-full items-end md:items-center font-medium gap-2 md:max-ml:gap-1 lg:space-x-8 lg:mt-0">
               <li>
                 <NavLink
                   to="/"
@@ -162,13 +162,13 @@ export default function Header() {
           >
             <Link
               to="login"
-              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg py-2 px-1 text-sm sm:px-4 lg:px-5 sm:py-2 lg:py-2.5 mr-1 sm:mr-2 focus:outline-none"
             >
               Log in
             </Link>
             <Link
               to="signup"
-              className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none"
+              className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm sm:px-4 lg:px-5 sm:py-2 lg:py-2.5 px-2 py-1 mr-2 focus:outline-none"
             >
               Get started
             </Link>

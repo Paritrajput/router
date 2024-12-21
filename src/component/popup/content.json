@@ -1,0 +1,20 @@
+{
+    "privacyPolicy": {
+        "title": "Privacy Policy",
+        "content": [
+            "YourVoiceHub is committed to protecting your privacy.",
+            "We collect personal data to enhance your experience.",
+            "We do not sell or share your data without consent.",
+            "For more details, contact us at support@yourvoicehub.com."
+        ]
+    },
+    "termsAndConditions": {
+        "title": "Terms & Conditions",
+        "content": [
+            "By using YourVoiceHub, you agree to our terms.",
+            "You are responsible for your content.",
+            "We reserve the right to suspend accounts for misuse.",
+            "For concerns, email support@yourvoicehub.com."
+        ]
+    }
+}

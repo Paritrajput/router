@@ -61,7 +61,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 ">
+    <div className=" bg-gray-100 ">
       {/* <h1 className="text-4xl font-bold text-center mb-8 text-blue-600">
         Contact Us & FAQs
       </h1> */}

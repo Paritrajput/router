@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -113,6 +113,12 @@ const Signup = () => {
             Sign Up
           </button>
         </form>
+        <span>
+          Aready have an account?
+          <Link to="login" className="text-red-700">
+            Login
+          </Link>
+        </span>
       </div>
     </div>
   );
