@@ -8,6 +8,7 @@
     min-height: fit-content;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease;
+    overflow-wrap: anywhere;
 }
 .blogCard:hover {
     transform: scale(1.02);
@@ -20,4 +21,7 @@
     width: 50%;
     max-width: 20rem;
     max-height: 14rem;
+}
+.blog-title{
+    overflow-wrap: anywhere;
 }

@@ -5,6 +5,9 @@ import "./Blogs.css";
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [userActive, setUserActive] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredBlogs, setFilteredBlogs] = useState(blogs);
+
   useEffect(() => {
     const active = async () => {
       try {
@@ -39,78 +42,77 @@ const Blogs = () => {
           return;
         }
 
-        const data = await response.json(); // Parse the JSON data
-        setBlogs(data); // Set the blogs into the state
-        console.log(data[0]);
+        const data = await response.json();
+        setBlogs(data);
       } catch (error) {
         console.error("Error fetching blogs:", error);
       }
     };
 
-    fetchBlogs(); // Call the function
+    fetchBlogs();
   }, []);
+  useEffect(() => {
+    setFilteredBlogs(blogs);
+  }, [blogs]);
+
+  const handleSearch = (event) => {
+    const query = event.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    // Filter blogs based on query
+    const filtered = blogs.filter((blog) => {
+      return (
+        (blog.title?.toLowerCase() || "").includes(query) ||
+        (blog.content?.toLowerCase() || "").includes(query) ||
+        (blog.author?.toLowerCase() || "").includes(query) ||
+        (blog.category?.toLowerCase() || "").includes(query)
+      );
+    });
+
+    setFilteredBlogs(filtered);
+  };
 
   return (
     <div>
-      <div className="flex p-3 pt-10 justify-between sticky top-14 shadow z-10 bg-gray-50">
-        <button className="bg-red-400 rounded-lg">
-          <NavLink
-            to={userActive ? "/createBlogs" : "/login"}
-            className={({ isActive }) =>
-              `block py-2 pr-4 pl-3 duration-200 ${
-                isActive ? "text-orange-700" : "text-gray-700"
-              } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-            }
-          >
-            Create New
-          </NavLink>
-        </button>
-        <div className="flex item-center">
+      <div className="flex p-1 sm:p-3 pt-3 justify-between flex-col sm:flex-row  sticky top-20 shadow z-10 bg-black text-white">
+        <div className="font-bold text-2xl mr-2 mb-2 sm:text-3xl md:text-4xl ">
+          Blogs
+        </div>
+
+        <div className="flex gap-3 justify-between  item-center">
           <input
             type="search"
             placeholder="Search Blogs"
-            className="h-10 rounded-xl text-black border p-3 border-black"
+            value={searchQuery}
+            onChange={handleSearch}
+            className="h-10 rounded-xl w-36 sm:w-auto text-black border p-3 border-black"
           />
-
-          <div className="flex justify-start p-1 gap-11 pl-5">
-            <div className=" flex items-center justify-end">
-              <div className="font-semibold">Sort By</div>
-              {/* <select
-              className="h-10 rounded-xl text-black border p-3 pb-0 pt-0 border-black"
-              value={sort}
-              onChange={(e) => setSort(e.target.value)} // Updating sort as a string
+          <button className="bg-red-900 text-white p-1  rounded-lg">
+            <NavLink
+              to={userActive ? "/createBlogs" : "/login"}
+              className={({ isActive }) =>
+                `block p-1 duration-200 ${
+                  isActive ? "text-white" : "text-white"
+                } border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+              }
             >
-              {sorting.map((option, index) => (
-                <option key={index} value={option.name}>
-                  {option.name}
-                </option>
-              ))}
-            </select> */}
-            </div>
-
-            <div className=" flex items-center justify-end ">
-              <div className="font-semibold">Select Language</div>
-              {/* <select
-              className="h-10 rounded-xl text-black border p-3 pb-0 pt-0 border-black"
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-            >
-              {languages.map((option, index) => (
-                <option key={index} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select> */}
-            </div>
-          </div>
+              Create New
+            </NavLink>
+          </button>
         </div>
       </div>
       <hr />
-      <div className="flex justify-evenly flex-wrap bgPage">
-        {blogs.map((blog, index) => (
-          <div key={index} className="m-3  p-1 w-5/12 bg-gray-400 blogCard ">
+      <div className="flex p-2 sl:p-0 justify-evenly flex-col sl:flex-row sl:flex-wrap bgPage">
+        {filteredBlogs.map((blog, index) => (
+          <div
+            key={index}
+            className="sl:m-3 m-1 p-1 w-full sl:w-5/12 bg-gray-400  blogCard "
+          >
             <div className="flex  mb-1">
-              <div className="imgDiv h-32">
+              <div
+                className="imgDiv sl:h-32 h-20
+              "
+              >
                 <img
                   className="w-full h-full"
                   src={
@@ -121,8 +123,10 @@ const Blogs = () => {
                   alt={blog.title}
                 />
               </div>
-              <div className="w-4/6 text-start p-2">
-                <div className="text-xl font-semibold">{blog.title}</div>
+              <div className="w-4/6 text-start p-2 text-wrap text-ellipsis text-balance blog-title">
+                <div className="sl:text-xl text-md font-semibold">
+                  {blog.title}
+                </div>
                 <div className="text-sm text-gray-600">
                   Category: {blog.category}
                 </div>
@@ -132,7 +136,7 @@ const Blogs = () => {
             <hr />
             <div className="flex flex-col">
               <div className=" flex justify-start">
-                <div className="text-start p-1">
+                <div className=" text-start p-1">
                   {(() => {
                     const words = blog.content.split(" ");
                     return words.length > 25

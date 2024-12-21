@@ -7,51 +7,54 @@ import { get } from "mongoose";
 function Profile() {
   const [username, setUsername] = useState("Guest");
   const { setIsLoggedIn } = useContext(UserContext);
+  const { isLoggedIn } = useContext(UserContext);
   const { theme, toggleTheme } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const token = localStorage.getItem("token"); // Assume token is stored in localStorage after login
-        console.log("Token before sending:", token);
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     try {
+  //       const token = localStorage.getItem("token"); // Assume token is stored in localStorage after login
+  //       console.log("Token before sending:", token);
 
-        if (!token) {
-          setError("No token found. Please log in.");
-          setIsLoggedIn(false);
-          navigate("/login");
-          return;
-        }
-        const response = await fetch("http://localhost:8000/user", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+  //       if (!token) {
+  //         setError("No token found. Please log in.");
+  //         setIsLoggedIn(false);
+  //         navigate("/login");
+  //         return;
+  //       }
+  //       const response = await fetch("http://localhost:8000/user", {
+  //         method: "GET",
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
 
-        if (response.ok) {
-          const data = await response.json();
-          console.log("User ID:", data.userId); // Access userId
-          console.log("Username:", data.username); // Access username
-          setUsername(data.username);
-        } else {
-          console.error("Failed to fetch user data:", await response.json());
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         console.log("User ID:", data.userId); // Access userId
+  //         console.log("Username:", data.username); // Access username
+  //         setUsername(data.username);
+  //         setIsLoggedIn(true);
+  //       } else {
+  //         console.error("Failed to fetch user data:", await response.json());
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //     }
+  //   };
 
-    fetchUser();
-  }, []);
+  //   fetchUser();
+  // }, [isLoggedIn]);
 
   const logout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
+    navigate("/login");
+
     console.log("you logged out");
   };
-  const { user } = useContext(UserContext);
 
   return (
     <div
@@ -68,7 +71,9 @@ function Profile() {
             alt="Profile"
             className="w-20 h-20 rounded-full object-cover mr-4"
           />
-          <h2 className="text-2xl font-semibold">Username:{username}</h2>
+          <h2 className="text-2xl font-semibold">
+            {`Username: ${isLoggedIn ? user.username : "guest"}`}
+          </h2>
         </div>
         <button
           onClick={logout}
