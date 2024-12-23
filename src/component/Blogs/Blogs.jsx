@@ -11,8 +11,7 @@ const Blogs = () => {
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);
   const { isLoggedIn } = useContext(UserContext);
 
-  console.log('API URL:', import.meta.env.VITE_API_URL);
-
+  console.log("API URL:", import.meta.env.VITE_API_URL);
 
   // useEffect(() => {
   //   const active = async () => {
@@ -41,8 +40,7 @@ const Blogs = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`);
-        console.log('API URL:', import.meta.env.VITE_API_URL);
-
+        console.log("API URL:", import.meta.env.VITE_API_URL);
 
         if (!response.ok) {
           console.error("Failed to fetch blogs");
@@ -125,35 +123,37 @@ const Blogs = () => {
             key={index}
             className="sl:m-3 m-1 p-1 w-full sl:w-5/12 bg-gray-400  blogCard "
           >
-            <div className="flex  mb-1">
-              <div
-                className="imgDiv sl:h-32 h-20
+            <Link to={`/blogs/${blog._id}`} state={{ blog }}>
+              <div className="flex  mb-1">
+                <div
+                  className="imgDiv sl:h-32 h-20 w-20
               "
-              >
-                <img
-                  className="w-full h-full"
-                  src={
-                    blog.coverImage
-                      ? `http://localhost:8000${blog.coverImage}`
-                      : "coverImg.jpeg"
-                  }
-                  alt={blog.title}
-                />
-              </div>
-              <div className="w-4/6 text-start p-2 text-wrap text-ellipsis text-balance blog-title">
-                <div className="sl:text-xl text-md font-semibold">
-                  {blog.title}
+                >
+                  <img
+                    className="w-full h-full"
+                    src={
+                      blog.coverImage
+                        ? `http://localhost:8000${blog.coverImage}`
+                        : "coverImg.jpeg"
+                    }
+                    alt={blog.title}
+                  />
                 </div>
-                <div className="text-sm text-gray-600">
-                  Category: {blog.category}
+                <div className="w-4/6 text-start pl-2 mx-sm:pl-0 text-wrap text-ellipsis text-balance blog-title">
+                  <div className="sl:text-xl text-md font-semibold">
+                    {blog.title}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    Category: {blog.category}
+                  </div>
+                  {blog.author && <div>Author:{blog.author}</div>}
                 </div>
-                <div>Author:{blog.author}</div>
               </div>
-            </div>
+            </Link>
             <hr />
-            <div className="flex flex-col">
+            <div className="flex flex-col  max-sm:hidden">
               <div className=" flex justify-start">
-                <div className=" text-start p-1">
+                <div className=" text-start p-1 ">
                   {(() => {
                     const words = blog.content.split(" ");
                     return words.length > 25
@@ -163,7 +163,7 @@ const Blogs = () => {
                 </div>
               </div>
               <diV className="flex justify-end">
-                <button className="rounded-lg bg-gray-300 flex justify-end w-fit p-1  items-end content-end">
+                <button className="rounded-lg bg-gray-300 flex justify-end w-fit p-1 max-sm:hidden items-end content-end">
                   <Link to={`/blogs/${blog._id}`} state={{ blog }}>
                     View All
                   </Link>

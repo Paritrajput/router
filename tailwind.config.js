@@ -11,7 +11,12 @@ export default {
       lg: "1024px",
       xl: "1280px",
     },
-    extend: {},
+    extend: {
+      height: {
+        "90screen": "90vh",
+        "60screen": "69vh",
+      },
+    },
   },
   plugins: [],
 };

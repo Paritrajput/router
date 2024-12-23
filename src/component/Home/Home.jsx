@@ -1,19 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 export default function Home() {
+  const exploreRef = useRef(null);
+  const scrollToSection = (ref) => {
+    ref.current.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div className="mx-0 w-full ">
-      <aside className="relative overflow-hidden text-white bg-black h-fit mx-0 ">
+      <aside className="relative overflow-hidden sm:h-90screen text-white flex items-center  bg-black h-60screen mx-0 ">
         <img
-          src="fake-news.jpg"
-          className="w-full h-full absolute opacity-40"
+          src="landing-img.jpg"
+          className="w-full min-h-full absolute opacity-40"
         ></img>
-        <div className="relative p-8 sm:p-16 lg:w-1/2  h-fit bg-transparent backdrop-blur-ssm">
-          <p className="text-5xl max-sm:text-2xl mb-2 font-extrabold">
-            Welcome to YourVoiceHub
+        <div className="relative flex flex-col items-center justify-center p-8 sm:p-16   h-fit bg-transparent backdrop-blur-ssm">
+          <p className="text-5xl max-sm:text-3xl max-sm:bold mb-2 font-extrabold">
+            Welcome to NewsBase
           </p>
-          <p className="text-xl max-sm:text-md mb-2">
+          <p className="text-xl max-sm:text-sm mb-2">
             your interactive space for news and creativity! Stay updated with
             the latest stories and trends, or unleash your imagination by
             creating your own blogs. Whether you're here to read, share, or
@@ -21,10 +26,13 @@ export default function Home() {
             your voice be heard!{" "}
           </p>
 
-          <div className="flex p-1 sm:mt-1  space-y-8 text-start sm:text-right sm:ml-auto">
-            <Link
+          <div
+            ref={exploreRef}
+            className="flex p-1 sm:mt-1 justify-center space-y-8 w-full"
+          >
+            <button
               className="inline-flex text-white items-center px-2 py-1 lg:px-4 lg:py-2 font-medium bg-orange-700 rounded-lg hover:opacity-75"
-              to="/"
+              onClick={() => scrollToSection(exploreRef)}
             >
               {/* <svg
                 fill="white"
@@ -44,18 +52,18 @@ export default function Home() {
                 alt="arrow--v1"
                 className="1"
               />
-            </Link>
+            </button>
           </div>
         </div>
       </aside>
 
       <div className="  place-items-center sm:mt-10 text-start">
-        <div className="text-3xl font-extrabold text-gray-900 sm:text-4xl p-2 ml-7 w-full flex justify-start ">
+        <div className="text-3xl font-extrabold text-gray-900 sm:text-4xl p-2  w-full flex justify-start ">
           <span>Explore</span>
         </div>
         <ul>
           <div className="grid-cols-1 sm:grid md:grid-cols-3 ">
-            <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1  sm:shrink-0 sm:grow sm:basis-0">
+            <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1 hover:bg-zinc-100 sm:shrink-0 sm:grow sm:basis-0">
               <a href="#!">
                 <img
                   className="rounded-t-lg"
@@ -102,11 +110,11 @@ export default function Home() {
               </a>
               <div className="p-6">
                 <a href="createBlogs">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                  <h5 class="mb-2 text-xl font-medium leading-tight ">
                     Create your own blog
                   </h5>
                 </a>
-                <p class="mb-3 font-normal text-gray-700 ">
+                <p class="mb-4 text-base ">
                   create your own blog, you can reach to people across the world
                   through your blogs.
                 </p>
@@ -140,130 +148,7 @@ export default function Home() {
             </div> */}
           </div>
         </ul>
-        <ul className=" lg:flex-row flex flex-col">
-          {/* <li className=" p-0 sl:p-5">
-            <div class="lg:max-w-xs flex lg:flex-col w-fit bg-white border border-gray-200 rounded-lg shadow ">
-              <a href="news" className="sm:max-lg:w-1/3 max-sm:p-0">
-                <img
-                  class="rounded-3xl p-3 h-full "
-                  src="fake-news.jpg"
-                  alt=""
-                />
-              </a>
-              <div class="lg:p-5 p-2 max-sm:absolue max-sm:flex max-sm:flex-col max-sm:items-center">
-                <a href="news">
-                  <h5 class="mb-2 text-md sl:text-xl md:text-2xl font-bold tracking-tight text-gray-900 ">
-                    Get the latest news from worldwide
-                  </h5>
-                </a>
-                <p class="mb-3  font-normal text-gray-700 ">
-                  Keep your knowlodge up to date . We have large collection of
-                  news from every corner of world in various languages.
-                </p>
-                <Link
-                  to="news"
-                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 "
-                >
-                  Read more
-                  <svg
-                    class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </li>
-          <li className="p-5">
-            <div class="max-w-xs w-fit bg-white border border-gray-200 rounded-lg shadow ">
-              <a href="blogs">
-                <img class="rounded-3xl p-3" src="fake-news.jpg" alt="" />
-              </a>
-              <div class="p-5">
-                <a href="blogs">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    Read the blogs of various users across world
-                  </h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 ">
-                  Read the blogs of various users across world. Blogs are
-                  available various languages try it out in your favrate
-                  language.
-                </p>
-                <Link
-                  to="blogs"
-                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 "
-                >
-                  Read more
-                  <svg
-                    class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </li>
-          <li className="p-5">
-            <div class="max-w-xs w-fit bg-white border border-gray-200 rounded-lg shadow ">
-              <Link to="createBlogs">
-                <img class="rounded-3xl p-3" src="fake-news.jpg" alt="" />
-              </Link>
-              <div class="p-5">
-                <a href="createBlogs">
-                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
-                    Create your own blog
-                  </h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 ">
-                  create your own blog, you can reach to people across the world
-                  through your blogs.
-                </p>
-                <a
-                  href="createBlogs"
-                  class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 "
-                >
-                  Read more
-                  <svg
-                    class="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </li> */}
-        </ul>
+        <ul className=" lg:flex-row flex flex-col"></ul>
       </div>
 
       <div>

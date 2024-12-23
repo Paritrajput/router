@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import Link for navigation
 import { UserContext } from "../../Context/userContext";
+import { NavLink } from "react-router-dom";
 
 const UserBlogsPage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -61,7 +62,12 @@ const UserBlogsPage = () => {
   }, [blogs]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex w-fit items-center justify-center">
+        <span>Loading...</span>
+        <img src="loading.gif"></img>
+      </div>
+    );
   }
 
   const handleSearch = (event) => {
@@ -85,27 +91,30 @@ const UserBlogsPage = () => {
     <div>
       {isLoggedIn ? (
         <>
-          <div className="flex bg-black text-white justify-between p-3 sticky top-20 z-10">
-            <div className="text-3xl font-bold">My Blogs</div>
-            <div className="flex gap-3 item-center">
+          <div className="flex p-1 sm:p-3 pt-3 justify-between flex-col sm:flex-row  sticky top-20 md:top-16 md:pt-5 lg:top-16 sm:top-24 shadow z-10 bg-black text-white">
+            <div className="font-bold text-2xl mr-2 mb-2 sm:text-3xl md:text-4xl ">
+              My Blogs
+            </div>
+
+            <div className="flex gap-3 justify-between  item-center">
               <input
                 type="search"
                 placeholder="Search Blogs"
                 value={searchQuery}
                 onChange={handleSearch}
-                className="h-10 rounded-xl text-black border p-3 border-black"
+                className="h-10 rounded-xl w-36 sm:w-auto text-black border p-3 border-black"
               />
-              <button className="bg-red-900 p-1 rounded-lg">
-                <Link
-                  to="/createBlogs"
+              <button className="bg-red-900 text-white p-1  rounded-lg">
+                <NavLink
+                  to={isLoggedIn ? "/createBlogs" : "/login"}
                   className={({ isActive }) =>
-                    `block p-3 duration-200 ${
-                      isActive ? "text-orange-700" : "text-gray-700"
-                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                    `block p-1 duration-200 ${
+                      isActive ? "text-white" : "text-white"
+                    } border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                   }
                 >
                   Create New
-                </Link>
+                </NavLink>
               </button>
             </div>
           </div>
@@ -120,36 +129,43 @@ const UserBlogsPage = () => {
               </Link>
             </div>
           ) : (
-            <div className="flex justify-evenly flex-wrap bgPage">
+            <div className="flex p-2 sl:p-0 justify-evenly flex-col sl:flex-row sl:flex-wrap bgPage">
               {filteredBlogs.map((blog, index) => (
                 <div
                   key={index}
-                  className="m-3  p-1 w-5/12 bg-gray-400 blogCard "
+                  className="sl:m-3 m-1 p-1 w-full sl:w-5/12 bg-gray-400  blogCard "
                 >
-                  <div className="flex  mb-1">
-                    <div className="imgDiv h-32">
-                      <img
-                        className="w-full h-full"
-                        src={
-                          blog.coverImage
-                            ? `http://localhost:8000${blog.coverImage}`
-                            : "coverImg.jpeg"
-                        }
-                        alt={blog.title}
-                      />
-                    </div>
-                    <div className="w-4/6 text-start p-2">
-                      <div className="text-xl font-semibold">{blog.title}</div>
-                      <div className="text-sm text-gray-600">
-                        Category: {blog.category}
+                  <Link to={`/blogs/${blog._id}`} state={{ blog }}>
+                    <div className="flex  mb-1">
+                      <div
+                        className="imgDiv sl:h-32 h-20 w-20
+              "
+                      >
+                        <img
+                          className="w-full h-full"
+                          src={
+                            blog.coverImage
+                              ? `http://localhost:8000${blog.coverImage}`
+                              : "coverImg.jpeg"
+                          }
+                          alt={blog.title}
+                        />
                       </div>
-                      <div>Author:{blog.author}</div>
+                      <div className="w-4/6 text-start pl-2 mx-sm:pl-0 text-wrap text-ellipsis text-balance blog-title">
+                        <div className="sl:text-xl text-md font-semibold">
+                          {blog.title}
+                        </div>
+                        <div className="text-sm text-gray-600">
+                          Category: {blog.category}
+                        </div>
+                        {blog.author && <div>Author:{blog.author}</div>}
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                   <hr />
-                  <div className="flex flex-col">
+                  <div className="flex flex-col  max-sm:hidden">
                     <div className=" flex justify-start">
-                      <div className="text-start p-1">
+                      <div className=" text-start p-1 ">
                         {(() => {
                           const words = blog.content.split(" ");
                           return words.length > 25
@@ -158,13 +174,13 @@ const UserBlogsPage = () => {
                         })()}
                       </div>
                     </div>
-                    <div className="flex justify-end">
-                      <button className="rounded-lg bg-gray-300 flex justify-end w-fit p-1  items-end content-end">
+                    <diV className="flex justify-end">
+                      <button className="rounded-lg bg-gray-300 flex justify-end w-fit p-1 max-sm:hidden items-end content-end">
                         <Link to={`/blogs/${blog._id}`} state={{ blog }}>
                           View All
                         </Link>
                       </button>
-                    </div>
+                    </diV>
                   </div>
                 </div>
               ))}
@@ -172,7 +188,7 @@ const UserBlogsPage = () => {
           )}
         </>
       ) : (
-        <div className="flex items-center justify-center text-3xl h-32 font-semibold">
+        <div className="flex items-center justify-center texl-xl sl:text-3xl h-32 font-semibold">
           You are not logged in. Please
           <Link to="../login" className="ml-1 text-red-800 ">
             Login

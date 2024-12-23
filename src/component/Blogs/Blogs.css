@@ -22,6 +22,13 @@
     max-width: 20rem;
     max-height: 14rem;
 }
+@media screen and (max-width: 500px) {
+    .imgDiv {
+      width:6rem;
+      height: 5rem;
+    }
+ 
+  }
 .blog-title{
     overflow-wrap: anywhere;
 }
