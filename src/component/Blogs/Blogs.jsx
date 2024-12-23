@@ -11,6 +11,9 @@ const Blogs = () => {
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);
   const { isLoggedIn } = useContext(UserContext);
 
+  console.log('API URL:', import.meta.env.VITE_API_URL);
+
+
   // useEffect(() => {
   //   const active = async () => {
   //     try {
@@ -38,6 +41,8 @@ const Blogs = () => {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`);
+        console.log('API URL:', import.meta.env.VITE_API_URL);
+
 
         if (!response.ok) {
           console.error("Failed to fetch blogs");
