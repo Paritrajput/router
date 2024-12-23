@@ -11,10 +11,9 @@ import {
 import Layout from "./Layout.jsx";
 import Home from "./component/Home/Home.jsx";
 
-import Contact from "./component/About/About.jsx";
+import Contact from "./component/ContactUs/ContactUs.jsx";
 import News from "./component/News/News.jsx";
 import User from "./component/User/User.jsx";
-import Github from "./component/Github/Github.jsx";
 import { Blogs } from "./component/Blogs/Blogs.jsx";
 import Signup from "./signup.jsx";
 import Login from "./login.jsx";
@@ -32,7 +31,6 @@ const router = createBrowserRouter(
       <Route path="contact" element={<Contact />} />
       <Route path="news" element={<News />} />
       <Route path="user/:id" element={<User />} />
-      <Route path="github" element={<Github />} />
       <Route path="blogs" element={<Blogs />} />
       <Route path="blogs/:blogId" element={<BlogDetail />} />
       <Route path="news/:newsId" element={<NewsDetail />} />

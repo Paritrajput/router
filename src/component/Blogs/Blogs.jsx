@@ -1,41 +1,42 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import "./Blogs.css";
+import { UserContext } from "../../Context/userContext";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [userActive, setUserActive] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);
+  const { isLoggedIn } = useContext(UserContext);
 
-  useEffect(() => {
-    const active = async () => {
-      try {
-        const token = localStorage.getItem("token"); // Assume token is stored in localStorage after login
-        console.log("Token before sending:", token);
+  // useEffect(() => {
+  //   const active = async () => {
+  //     try {
+  //       const token = localStorage.getItem("token"); // Assume token is stored in localStorage after login
 
-        if (!token) {
-          console.log("No token found. Please log in.");
-          return;
-        }
-        const response = await fetch("http://localhost:8000/myblogs", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`, // Include JWT token in Authorization header
-          },
-        });
-        if (response.ok) {
-          setUserActive(true);
-        }
-      } catch {}
-    };
-    active();
-  }, []);
+  //       if (!token) {
+  //         console.log("No token found. Please log in.");
+  //         return;
+  //       }
+  //       const response = await fetch("import.meta.env.VITE_API_URL/myblogs", {
+  //         method: "GET",
+  //         headers: {
+  //           Authorization: `Bearer ${token}`, // Include JWT token in Authorization header
+  //         },
+  //       });
+  //       if (response.ok) {
+  //         setUserActive(true);
+  //       }
+  //     } catch {}
+  //   };
+  //   active();
+  // }, []);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:8000/blogs");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/blogs`);
 
         if (!response.ok) {
           console.error("Failed to fetch blogs");
@@ -89,7 +90,7 @@ const Blogs = () => {
           />
           <button className="bg-red-900 text-white p-1  rounded-lg">
             <NavLink
-              to={userActive ? "/createBlogs" : "/login"}
+              to={isLoggedIn ? "/createBlogs" : "/login"}
               className={({ isActive }) =>
                 `block p-1 duration-200 ${
                   isActive ? "text-white" : "text-white"

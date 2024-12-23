@@ -10,42 +10,6 @@ function Profile() {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     try {
-  //       const token = localStorage.getItem("token"); // Assume token is stored in localStorage after login
-  //       console.log("Token before sending:", token);
-
-  //       if (!token) {
-  //         setError("No token found. Please log in.");
-  //         setIsLoggedIn(false);
-  //         navigate("/login");
-  //         return;
-  //       }
-  //       const response = await fetch("http://localhost:8000/user", {
-  //         method: "GET",
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
-
-  //       if (response.ok) {
-  //         const data = await response.json();
-  //         console.log("User ID:", data.userId); // Access userId
-  //         console.log("Username:", data.username); // Access username
-  //         setUsername(data.username);
-  //         setIsLoggedIn(true);
-  //       } else {
-  //         console.error("Failed to fetch user data:", await response.json());
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching user data:", error);
-  //     }
-  //   };
-
-  //   fetchUser();
-  // }, [isLoggedIn]);
-
   const logout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);

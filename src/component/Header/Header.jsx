@@ -22,7 +22,7 @@ export default function Header() {
           setIsLoggedIn(false);
           return;
         }
-        const response = await fetch("http://localhost:8000/user", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/user`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

@@ -9,6 +9,7 @@ const CreateBlogs = () => {
   const [message, setMessage] = useState("");
 
   const categories = [
+    "General",
     "Technology",
     "Health",
     "Business",
@@ -36,7 +37,6 @@ const CreateBlogs = () => {
     try {
       // Retrieve token from localStorage
       const token = localStorage.getItem("token");
-      console.log("Token before sending:", token); // Debugging: Ensure token exists
 
       if (!token) {
         setMessage("No token found. Please log in.");
@@ -44,7 +44,7 @@ const CreateBlogs = () => {
       }
 
       // Send data to the server with the Authorization header
-      const response = await fetch("http://localhost:8000/blog", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/blog`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`, // Include JWT token in Authorization header

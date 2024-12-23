@@ -23,12 +23,15 @@ const UserBlogsPage = () => {
           navigate("/login");
           return;
         }
-        const response = await fetch("http://localhost:8000/myblogs", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`, // Include JWT token in Authorization header
-          },
-        });
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/myblogs`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`, // Include JWT token in Authorization header
+            },
+          }
+        );
 
         if (response.status === 401) {
           setError("Unauthorized. Please log in again.");
