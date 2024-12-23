@@ -47,22 +47,101 @@ export default function Home() {
             </Link>
           </div>
         </div>
-
-        {/* <div className="absolute inset-0 w-full sm:my-20 sm:pt-1 pt-12 h-full ">
-          <img
-            className="w-96"
-            src="https://i.ibb.co/5BCcDYB/Remote2.png"
-            alt="image1"
-          />
-        </div> */}
       </aside>
 
       <div className="  place-items-center sm:mt-10 text-start">
         <div className="text-3xl font-extrabold text-gray-900 sm:text-4xl p-2 ml-7 w-full flex justify-start ">
           <span>Explore</span>
         </div>
+        <ul>
+          <div className="grid-cols-1 sm:grid md:grid-cols-3 ">
+            <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1  sm:shrink-0 sm:grow sm:basis-0">
+              <a href="#!">
+                <img
+                  className="rounded-t-lg"
+                  src="https://tecdn.b-cdn.net/img/new/standard/city/041.webp"
+                  alt="Hollywood Sign on The Hill"
+                />
+              </a>
+              <div className="p-6">
+                <h5 className="mb-2 text-xl font-medium leading-tight">
+                  Get the latest news from worldwide
+                </h5>
+                <p className="mb-4 text-base">
+                  Keep your knowlodge up to date . We have large collection of
+                  news from every corner of world in various languages.
+                </p>
+              </div>
+            </div>
+            <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1  sm:shrink-0 sm:grow sm:basis-0">
+              <a href="#!">
+                <img
+                  className="rounded-t-lg"
+                  src="https://tecdn.b-cdn.net/img/new/standard/city/042.webp"
+                  alt="Palm Springs Road"
+                />
+              </a>
+              <div className="p-6">
+                <h5 className="mb-2 text-xl font-medium leading-tight">
+                  Read the blogs of various users across world
+                </h5>
+                <p className="mb-4 text-base">
+                  Read the blogs of various users across world. Blogs are
+                  available various languages try it out in your favrate
+                  language.
+                </p>
+              </div>
+            </div>
+            <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1 de sm:shrink-0 sm:grow sm:basis-0">
+              <a href="#!">
+                <img
+                  className="rounded-t-lg"
+                  src="https://tecdn.b-cdn.net/img/new/standard/city/044.webp"
+                  alt="Skyscrapers"
+                />
+              </a>
+              <div className="p-6">
+                <a href="createBlogs">
+                  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+                    Create your own blog
+                  </h5>
+                </a>
+                <p class="mb-3 font-normal text-gray-700 ">
+                  create your own blog, you can reach to people across the world
+                  through your blogs.
+                </p>
+                {/* <h5 className="mb-2 text-xl font-medium leading-tight">
+                  Card title
+                </h5>
+                <p className="mb-4 text-base">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content.
+                </p> */}
+              </div>
+            </div>
+            {/* <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1  sm:shrink-0 sm:grow sm:basis-0">
+              <a href="#!">
+                <img
+                  className="rounded-t-lg"
+                  src="https://tecdn.b-cdn.net/img/new/standard/city/043.webp"
+                  alt="Los Angeles Skyscrapers"
+                />
+              </a>
+              <div className="p-6">
+                <h5 className="mb-2 text-xl font-medium leading-tight">
+                  Card title
+                </h5>
+                <p className="mb-4 text-base">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div> */}
+          </div>
+        </ul>
         <ul className=" lg:flex-row flex flex-col">
-          <li className=" p-0 sl:p-5">
+          {/* <li className=" p-0 sl:p-5">
             <div class="lg:max-w-xs flex lg:flex-col w-fit bg-white border border-gray-200 rounded-lg shadow ">
               <a href="news" className="sm:max-lg:w-1/3 max-sm:p-0">
                 <img
@@ -183,7 +262,7 @@ export default function Home() {
                 </a>
               </div>
             </div>
-          </li>
+          </li> */}
         </ul>
       </div>
 

@@ -15,7 +15,6 @@ const UserBlogsPage = () => {
     const fetchUserBlogs = async () => {
       try {
         const token = localStorage.getItem("token"); // Assume token is stored in localStorage after login
-        console.log("Token before sending:", token);
 
         if (!token) {
           setError("No token found. Please log in.");
@@ -159,13 +158,13 @@ const UserBlogsPage = () => {
                         })()}
                       </div>
                     </div>
-                    <diV className="flex justify-end">
+                    <div className="flex justify-end">
                       <button className="rounded-lg bg-gray-300 flex justify-end w-fit p-1  items-end content-end">
                         <Link to={`/blogs/${blog._id}`} state={{ blog }}>
                           View All
                         </Link>
                       </button>
-                    </diV>
+                    </div>
                   </div>
                 </div>
               ))}

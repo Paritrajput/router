@@ -5,7 +5,8 @@ import { UserContext } from "../../Context/userContext";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
-  const [userActive, setUserActive] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);
   const { isLoggedIn } = useContext(UserContext);
@@ -47,6 +48,8 @@ const Blogs = () => {
         setBlogs(data);
       } catch (error) {
         console.error("Error fetching blogs:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -72,6 +75,14 @@ const Blogs = () => {
 
     setFilteredBlogs(filtered);
   };
+  if (loading) {
+    return (
+      <div className="flex w-full mt-5 items-center justify-center">
+        <span>Loading...</span>
+        <img src="loading.gif"></img>
+      </div>
+    );
+  }
 
   return (
     <div>

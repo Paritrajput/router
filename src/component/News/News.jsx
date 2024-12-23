@@ -8,6 +8,7 @@ const NewsComponent = () => {
   const [error, setError] = useState(null);
   const [keywords, setKeywords] = useState(null);
   const [sort, setSort] = useState("publishedAt");
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const sorting = [
     { name: "publishedAt" },
@@ -31,21 +32,23 @@ const NewsComponent = () => {
 
   useEffect(() => {
     const fetchNews = async () => {
-      // const apiKey = "088417053d41419586f076e7340e924e";
-      const apiKey = "5b7cb32913d34adc947e946a1bbc8743";
-      const url = `https://newsapi.org/v2/everything?q={${keywords}||${categories}}&language=${language}&sortBy=${sort}&apiKey=${apiKey}`;
+      const url = `${import.meta.env.VITE_API_URL}/api/news?q=${
+        keywords || categories
+      }&language=${language}&sortBy=${sort}`;
 
       try {
         const response = await fetch(url);
         const data = await response.json();
 
-        if (data.status === "ok") {
+        if (response.ok) {
           setNewsData(data.articles);
         } else {
-          setError("Failed to fetch news");
+          setError(data.error || "Failed to fetch news");
         }
       } catch (err) {
         setError(err.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -56,9 +59,9 @@ const NewsComponent = () => {
     return <div>Error fetching news: {error}</div>;
   }
 
-  if (!newsData) {
+  if (loading) {
     return (
-      <div className="flex w-fit items-center justify-center">
+      <div className="flex w-full pt-5 items-center justify-center">
         <span>Loading...</span>
         <img src="loading.gif"></img>
       </div>

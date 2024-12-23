@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+const [loading, setLoading] = useState(true);
 
 const NewsDetail = () => {
   const extraTxt =
@@ -42,6 +43,8 @@ const NewsDetail = () => {
         }
       } catch (err) {
         setError(err.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -54,6 +57,14 @@ const NewsDetail = () => {
     setNews(selectedNews);
     navigate(`/news/${selectedNews.title}`, { state: { news: selectedNews } });
   };
+  if (loading) {
+    return (
+      <div className="flex w-full pt-5 items-center justify-center">
+        <span>Loading...</span>
+        <img src="loading.gif"></img>
+      </div>
+    );
+  }
 
   return (
     <div className="news-detail">
