@@ -56,7 +56,14 @@ const NewsComponent = () => {
   }, [keywords, sort, categories, language]);
 
   if (error) {
-    return <div>Error fetching news: {error}</div>;
+    return (
+      <>
+        <div className="text-center flex flex-col gap-5 justify-center p-5 m-3">
+          <div>Error fetching news: {error}</div>
+          <img className="h-44 w-auto m-auto" src="404img.png" />
+        </div>
+      </>
+    );
   }
 
   if (loading) {
@@ -186,24 +193,21 @@ const NewsComponent = () => {
                       View full article
                     </Link> */}
                     <div className="flex justify-start gap-1 sm:gap-5 md:gap-10 mb-0 mb-0">
-                      <p className=" text-sm font-bold sm:text-md sl:text-lg">
+                      <p className=" text-sm font-medium sm:text-md sl:text-lg  max-sm:hidden">
                         Author:
-                        <span className=" font-extralight text-md md:contents hidden">
-                          {news.author || "Unknown"}
-                        </span>
-                        <strong className="font-extralight text-sm sm:text-md sl:text-lg ">
+                        <strong className="font-light text-sm sm:text-md sl:text-lg ">
                           {news.author || "Unknown"}
                         </strong>
                       </p>
-                      <p className=" text-sm font-bold sm:text-md sl:text-lg">
+                      <p className=" text-sm font-medium sm:text-md sl:text-lg">
                         Source:
-                        <strong className="font-extralight text-sm sm:text-md sl:text-lg ">
+                        <strong className="font-light text-sm sm:text-md sl:text-lg ">
                           {news.source.name || "Unknown"}
                         </strong>
                       </p>
-                      <p className=" text-sm font-bold sm:text-md sl:text-lg">
+                      <p className=" text-sm font-medium sm:text-md sl:text-lg">
                         Published At:{" "}
-                        <strong className="font-extralight text-sm sm:text-md sl:text-lg">
+                        <strong className="font-light text-sm sm:text-md sl:text-lg">
                           {new Date(news.publishedAt).toLocaleDateString()}
                         </strong>
                       </p>

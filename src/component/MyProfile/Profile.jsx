@@ -31,32 +31,32 @@ function Profile() {
           <img
             src="Profile.png"
             alt="Profile"
-            className="w-20 h-20 rounded-full object-cover mr-4"
+            className="sm:w-20 w-10  rounded-full object-cover mr-4"
           />
-          <h2 className="text-2xl font-semibold">
+          <h2 className=" text:xl sm:text-2xl font-semibold">
             {`Username: ${isLoggedIn ? user.username : "guest"}`}
           </h2>
         </div>
         <button
           onClick={logout}
-          className=" p-2 text-white bg-red-500 font-bold rounded-md hover:bg-red-600 transition-all"
+          className=" sm:p-2 p-1 text-white bg-red-700 font-bold rounded-md hover:bg-red-600 transition-all"
         >
           Logout
         </button>
       </div>
       <div className="mt-6 flex gap-3">
-        <div className="flex justify-between items-center py-2 cursor-pointer hover:text-blue-500 transition-colors">
+        {/* <div className="flex justify-between items-center py-2 cursor-pointer hover:text-blue-500 transition-colors">
           <span>Mode</span>
           <span className="text-xl cursor-pointer" onClick={toggleTheme}>
             {theme === "light" ? "🌞" : "🌙"}
           </span>
-        </div>
-        <div
+        </div> */}
+        {/* <div
           onClick={() => navigate("/myblogs")}
           className="py-2 cursor-pointer hover:text-blue-500 transition-colors"
         >
           My Blogs
-        </div>
+        </div> */}
       </div>
     </div>
   );

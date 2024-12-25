@@ -95,7 +95,11 @@ export default function Footer() {
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
               <Link to="/" className="flex items-center">
-                <img src="logo_newBase.png" className="mr-3 h-14" alt="Logo" />
+                <img
+                  src="/logo_newBase.png"
+                  className="mr-3 h-8 sm:h-10 md:h-12"
+                  alt="Logo"
+                />
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -110,8 +114,8 @@ export default function Footer() {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/about" className="hover:underline">
-                      About
+                    <Link to="/contact" className="hover:underline">
+                      contact
                     </Link>
                   </li>
                 </ul>
@@ -132,12 +136,14 @@ export default function Footer() {
                     </a>
                   </li>
                   <li>
-                    <button
-                      onClick={() => togglePopup("terms")}
-                      className="hover:underline text-gray-500"
+                    <a
+                      href="https://www.linkedin.com/in/parit-rajput-9ba7651b4/"
+                      className="hover:underline"
+                      target="_blank"
+                      rel="noreferrer"
                     >
-                      Discord
-                    </button>
+                      Linkdin
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -157,7 +163,7 @@ export default function Footer() {
                       onClick={() => togglePopup("terms")}
                       className="hover:underline text-gray-500"
                     >
-                      Terms &amp; Conditions
+                      Terms & Conditions
                     </button>
                   </li>
                 </ul>

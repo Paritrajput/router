@@ -54,7 +54,7 @@ export default function Header() {
         <div className="md:flex h-full justify-between  items-center mx-auto max-w-screen-2xl">
           <div className="absolute pt-1 md:pt-0 md:relative top-2 md:top-1 left-2">
             <img
-              src="logo_newBase.png"
+              src="/logo_newBase.png"
               className="mr-3 h-8 sm:h-10 md:h-12"
               alt="Logo"
             />
@@ -128,18 +128,6 @@ export default function Header() {
                   Contact Us
                 </NavLink>
               </li>
-              <li>
-                {/* <NavLink
-                  to="/github"
-                  className={({ isActive }) =>
-                    `block py-2 pr-4 pl-3 duration-200 ${
-                      isActive ? "text-orange-700" : "text-gray-700"
-                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
-                  }
-                >
-                  Github
-                </NavLink> */}
-              </li>
             </ul>
           </div>
 
@@ -150,7 +138,7 @@ export default function Header() {
           >
             <div className="rounded-2xl absolute  md:relative top-2 right-2 bg gray-400">
               <Link to="profile">
-                <img src="Profile.png" className="w-10" />
+                <img src="/Profile.png" className="w-8 sm:w-10" />
               </Link>
             </div>
           </div>

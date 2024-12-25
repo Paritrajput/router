@@ -43,8 +43,7 @@ const ContactUs = () => {
   const faqs = [
     {
       question: "How do I contact support?",
-      answer:
-        "You can use the contact form or email us at support@example.com.",
+      answer: "You can use the contact form to email us with your query.",
     },
     {
       question: "What is your response time?",
@@ -52,7 +51,8 @@ const ContactUs = () => {
     },
     {
       question: "Can I schedule a demo?",
-      answer: "Yes, reach out to us using the contact form to schedule a demo.",
+      answer:
+        "Yes, reach out to us using the contact form or on social media to schedule a demo.",
     },
   ];
 

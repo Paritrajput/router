@@ -43,8 +43,13 @@ const Blogs = () => {
         console.log("API URL:", import.meta.env.VITE_API_URL);
 
         if (!response.ok) {
-          console.error("Failed to fetch blogs");
-          return;
+          return (
+            <>
+              <div className="text-center flex flex-col gap-5 justify-center p-5 m-3">
+                <img className="h-44 w-auto m-auto" src="404img.png" />
+              </div>
+            </>
+          );
         }
 
         const data = await response.json();
@@ -133,7 +138,7 @@ const Blogs = () => {
                     className="w-full h-full"
                     src={
                       blog.coverImage
-                        ? `http://localhost:8000${blog.coverImage}`
+                        ? `${import.meta.env.VITE_API_URL}${blog.coverImage}`
                         : "coverImg.jpeg"
                     }
                     alt={blog.title}
@@ -150,7 +155,7 @@ const Blogs = () => {
                 </div>
               </div>
             </Link>
-            <hr />
+            <hr className="max-sm:hidden" />
             <div className="flex flex-col  max-sm:hidden">
               <div className=" flex justify-start">
                 <div className=" text-start p-1 ">

@@ -31,19 +31,9 @@ export default function Home() {
             className="flex p-1 sm:mt-1 justify-center space-y-8 w-full"
           >
             <button
-              className="inline-flex text-white items-center px-2 py-1 lg:px-4 lg:py-2 font-medium bg-orange-700 rounded-lg hover:opacity-75"
+              className="inline-flex text-white items-center px-2 py-1 lg:px-4 lg:py-2 font-medium bg-red-900 rounded-lg hover:opacity-75"
               onClick={() => scrollToSection(exploreRef)}
             >
-              {/* <svg
-                fill="white"
-                width="24"
-                height="24"
-                xmlns="http://www.w3.org/2000/svg"
-                fillRule="evenodd"
-                clipRule="evenodd"
-              >
-                <path d="M1.571 23.664l10.531-10.501 3.712 3.701-12.519 6.941c-.476.264-1.059.26-1.532-.011l-.192-.13zm9.469-11.56l-10.04 10.011v-20.022l10.04 10.011zm6.274-4.137l4.905 2.719c.482.268.781.77.781 1.314s-.299 1.046-.781 1.314l-5.039 2.793-4.015-4.003 4.149-4.137zm-15.854-7.534c.09-.087.191-.163.303-.227.473-.271 1.056-.275 1.532-.011l12.653 7.015-3.846 3.835-10.642-10.612z" />
-              </svg> */}
               Explore
               <img
                 width="32"
@@ -57,20 +47,20 @@ export default function Home() {
         </div>
       </aside>
 
-      <div className="  place-items-center sm:mt-10 text-start">
+      <div className="  place-items-center sm:mt-10 text-start pb-5">
         <div className="text-3xl font-extrabold text-gray-900 sm:text-4xl p-2  w-full flex justify-start ">
           <span>Explore</span>
         </div>
         <ul>
           <div className="grid-cols-1 sm:grid md:grid-cols-3 ">
             <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1 hover:bg-zinc-100 sm:shrink-0 sm:grow sm:basis-0">
-              <a href="#!">
+              <Link to="news">
                 <img
                   className="rounded-t-lg"
-                  src="https://tecdn.b-cdn.net/img/new/standard/city/041.webp"
+                  src="news_img.webp"
                   alt="Hollywood Sign on The Hill"
                 />
-              </a>
+              </Link>
               <div className="p-6">
                 <h5 className="mb-2 text-xl font-medium leading-tight">
                   Get the latest news from worldwide
@@ -81,14 +71,14 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1  sm:shrink-0 sm:grow sm:basis-0">
-              <a href="#!">
+            <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1 hover:bg-zinc-100 sm:shrink-0 sm:grow sm:basis-0">
+              <Link to="blogs">
                 <img
                   className="rounded-t-lg"
-                  src="https://tecdn.b-cdn.net/img/new/standard/city/042.webp"
+                  src="read_blog.webp"
                   alt="Palm Springs Road"
                 />
-              </a>
+              </Link>
               <div className="p-6">
                 <h5 className="mb-2 text-xl font-medium leading-tight">
                   Read the blogs of various users across world
@@ -100,14 +90,14 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1 de sm:shrink-0 sm:grow sm:basis-0">
-              <a href="#!">
+            <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1 hover:bg-zinc-100 sm:shrink-0 sm:grow sm:basis-0">
+              <Link to="createBlogs">
                 <img
                   className="rounded-t-lg"
-                  src="https://tecdn.b-cdn.net/img/new/standard/city/044.webp"
+                  src="create_blog.webp"
                   alt="Skyscrapers"
                 />
-              </a>
+              </Link>
               <div className="p-6">
                 <a href="createBlogs">
                   <h5 class="mb-2 text-xl font-medium leading-tight ">
@@ -118,34 +108,8 @@ export default function Home() {
                   create your own blog, you can reach to people across the world
                   through your blogs.
                 </p>
-                {/* <h5 className="mb-2 text-xl font-medium leading-tight">
-                  Card title
-                </h5>
-                <p className="mb-4 text-base">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content.
-                </p> */}
               </div>
             </div>
-            {/* <div className="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1  sm:shrink-0 sm:grow sm:basis-0">
-              <a href="#!">
-                <img
-                  className="rounded-t-lg"
-                  src="https://tecdn.b-cdn.net/img/new/standard/city/043.webp"
-                  alt="Los Angeles Skyscrapers"
-                />
-              </a>
-              <div className="p-6">
-                <h5 className="mb-2 text-xl font-medium leading-tight">
-                  Card title
-                </h5>
-                <p className="mb-4 text-base">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div>
-            </div> */}
           </div>
         </ul>
         <ul className=" lg:flex-row flex flex-col"></ul>
@@ -173,13 +137,12 @@ export default function Home() {
                   matters. Together, let's create, share, and grow!
                 </p>
                 <div class="mt-8">
-                  <a
-                    href="contact"
+                  <Link
+                    to="contact"
                     class="text-blue-500 hover:text-blue-600 font-medium"
                   >
                     Connect with us
-                    <span class="ml-2">&#8594;</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div class="mt-12 md:mt-0">

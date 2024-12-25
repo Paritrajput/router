@@ -33,7 +33,7 @@ const Signup = () => {
       if (!response.ok) {
         const errorData = await response.json();
         console.error(errorData);
-        throw new Error(errorData.message || "Signup failed");
+        throw new Error(errorData.error || "Signup failed");
       }
 
       const data = await response.json();
@@ -49,76 +49,83 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
-        {error && <div className="text-red-500 mb-4">{error}</div>}
-        {success && <div className="text-green-500 mb-4">{success}</div>}
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="username"
+    <div>
+      <header className="w-full bg-white p-3 shadow-2xl ">
+        <div className="sm:h-14 h-10 w-44 sm:w-52">
+          <img src="logo_newBase.png" />
+        </div>
+      </header>
+      <div className="flex justify-center items-center h-90screen p-5 bg-gray-100">
+        <div className="w-full max-w-md p-5 sm:p-8 bg-white rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
+          {error && <div className="text-red-500 mb-4">{error}</div>}
+          {success && <div className="text-green-500 mb-4">{success}</div>}
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="username"
+              >
+                Username
+              </label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                value={formData.username}
+                onChange={handleChange}
+                className="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
-              Username
-            </label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              value={formData.username}
-              onChange={handleChange}
-              className="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="email"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label
-              className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="password"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="border border-gray-300 rounded w-full py-2 px-3 focus:outline-none focus:border-blue-500"
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          >
-            Sign Up
-          </button>
-        </form>
-        <span>
-          Aready have an account?
-          <Link to="login" className="text-red-700">
-            Login
-          </Link>
-        </span>
+              Sign Up
+            </button>
+          </form>
+          <span>
+            Aready have an account?
+            <Link to="/login" className="text-red-700">
+              Login
+            </Link>
+          </span>
+        </div>
       </div>
     </div>
   );

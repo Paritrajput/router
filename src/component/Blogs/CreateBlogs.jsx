@@ -82,9 +82,9 @@ const CreateBlogs = () => {
 
   return (
     <div>
-      <div className="flex bg-gray-300 justify-between p-1 ">
+      <div className="flex justify-between p-1 bg-black text-white ">
         <h1 className="text-xl font-bold ">Write a Blog</h1>
-        <div className="bg-blue-500 text-white p-2  ">
+        <div className="bg-red-900 rounded-md text-white max-sm:p-1 p-2  ">
           <NavLink to="/blogs" className="bg-gray h-3 w-11 ">
             Go To Blogs
           </NavLink>
@@ -93,9 +93,9 @@ const CreateBlogs = () => {
       <div className=" mx-auto p-4 ">
         {message && <div className="green">{message}</div>}
         <form onSubmit={handleSubmit}>
-          <div className="flex justify-between mb-2">
-            <div className=" flex w-1/2 items-center">
-              <label>Blog Title</label>
+          <div className="flex justify-between max-sm:flex-col max-sm:gap-2 mb-2">
+            <div className=" flex w-1/2 max-sm:w-full  items-center">
+              <label className="w-20">Blog Title</label>
               <input
                 type="text"
                 value={title}
@@ -121,7 +121,7 @@ const CreateBlogs = () => {
               </select>
             </div>
           </div>
-          <div className="mb-2 flex bg-gray-300 flex-col">
+          <div className="mb-2 flex flex-col">
             <label className="flex ">Blog Content</label>
             <textarea
               value={content}
@@ -131,16 +131,19 @@ const CreateBlogs = () => {
             />
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className=" items-center flex">
-              <label>Cover Image (optional)</label>
+          <div className="flex items-center justify-between max-sm:flex-col gap-3">
+            <div className=" items-center flex ">
+              <label className="bg-gray">Cover Image</label>
               <input
                 type="file"
                 onChange={(e) => setCoverImage(e.target.files[0])}
-                className="border p-2 "
+                className="border p-2 max-sm:w-2/3 "
               />
             </div>
-            <button type="submit" className="bg-blue-500 text-white p-2  w-fit">
+            <button
+              type="submit"
+              className="bg-red-900 rounded-md text-white max-sm:p-1 p-2  w-fit"
+            >
               Submit Blog
             </button>
           </div>

@@ -68,21 +68,24 @@ const NewsDetail = () => {
 
   return (
     <div className="news-detail">
-      <div className=" w-full absolute bg-black h-52"></div>
-      <button
+      <div className=" w-full absolute bg-black h-60"></div>
+      <img
+        className="relative h-7 "
+        src="/icons-back.png"
+        onClick={() => navigate(-1)}
+      />
+      {/* <button
         onClick={() => navigate(-1)}
         className="back-button bg-red-700 z-6 relative justify-start flex p-1"
-      >
-        Go Back
-      </button>
+      ></button> */}
       <div className="relative">
-        <div className="flex justify-center">
+        <div className="flex pl-3 justify-center">
           <h1 className="text-white absolute z-5 text-3xl font-bold">
             {news.title}
           </h1>
         </div>
-        <div className="text-white flex">
-          <div className=" w-1/3 shadow-xl z-5  relative bg-white mt-28 max-h-fit">
+        <div className="text-white flex ">
+          {/* <div className="  max-sm:w-2/5 shadow-xl z-5 float-left relative bg-white mt-28 max-h-fit">
             {news.urlToImage && (
               <img
                 src={news.urlToImage}
@@ -105,39 +108,85 @@ const NewsDetail = () => {
                     <div
                       key={index}
                       onClick={() => handleNewsClick(news)}
-                      className="cursor-pointer flex p-2 items-center hover:bg-zinc-100 "
+                      className="cursor-pointer flex py-1  max-sm:text-sm sm:p-2 items-center hover:bg-zinc-100 "
                     >
                       <img
                         src={news.urlToImage || "/download.jpeg"}
                         alt={news.title}
                         className=" h-10 w-10"
                       />
-                      <p className="text  p-2 text-black ">{news.title}</p>
+                      <p className="sm:p-2 text-black ">{news.title}</p>
                     </div>
                   ))}
                 </div>
               )}
             </div>
-          </div>
-          <div className="w-7/12 mt-20">
-            <div className="relative  gap-2 mt-3 p-2 flex w-full justify-evenly">
-              <p>
-                <strong>Author:</strong> {news.author || "Unknown"}
-              </p>
-              <p>
-                <strong>Source:</strong> {news.source.name || "Unknown"}
-              </p>
-              <p>
-                <strong>Published At:</strong>{" "}
-                {new Date(news.publishedAt).toLocaleDateString()}
-              </p>
-            </div>
-
-            <div className=" mt-10  text-start text-black p-10">
+          </div> */}
+          <div className="  mt-24 sm:mt-20 ">
+            <div className=" mt-10  text-start text-black  ">
               <div>
-                <p>
+                <div className="  max-sm:w-1/2 w-2/5 shadow-xl z-5 float-left relative bg-white mr-3 sm:mr-5 max-h-fit">
+                  {news.urlToImage && (
+                    <img
+                      src={news.urlToImage}
+                      alt={news.title}
+                      className="detail-image relative z-5 w-full  "
+                    />
+                  )}
+                  {!news.urlToImage && (
+                    <img
+                      src="/download.jpeg"
+                      alt={news.title}
+                      className="detail-image relative z-5 w-full  "
+                    />
+                  )}
+                  <div className="text-black pt-3">
+                    <h2 className="underline font-semibold">
+                      More Related To This
+                    </h2>
+                    {newsDataExtra && (
+                      <div className="divide-y divide-solid">
+                        {newsDataExtra.map((news, index) => (
+                          <div
+                            key={index}
+                            onClick={() => handleNewsClick(news)}
+                            className="cursor-pointer flex py-1  max-sm:text-sm sm:p-2 items-center hover:bg-zinc-100 "
+                          >
+                            <img
+                              src={news.urlToImage || "/download.jpeg"}
+                              alt={news.title}
+                              className=" h-10 w-10"
+                            />
+                            <p className="sm:p-2 text-black ">{news.title}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="relative text-white  gap-2 sm:my-3 sm:p-2 flex max-md:flex-col w-auto justify-evenly">
+                  <p className=" text-sm font-medium sm:text-md sl:text-lg  max-lg:hidden">
+                    Author:
+                    <strong className="font-light text-sm sm:text-md md:text-lg ">
+                      {news.author || "Unknown"}
+                    </strong>
+                  </p>
+                  <p className=" text-sm font-medium sm:text-md sl:text-lg">
+                    Source:
+                    <strong className="font-light text-sm sm:text-md md:text-lg ">
+                      {news.source.name || "Unknown"}
+                    </strong>
+                  </p>
+                  <p className=" text-sm font-medium sm:text-md sl:text-lg">
+                    Published At:{" "}
+                    <strong className="font-light text-sm sm:text-md md:text-lg">
+                      {new Date(news.publishedAt).toLocaleDateString()}
+                    </strong>
+                  </p>
+                </div>
+                <div className="sm:p-10 mt-5 p-3">
                   {`${news.content} + ${extraTxt}` || "No content available"}
-                </p>
+                </div>
               </div>
             </div>
           </div>

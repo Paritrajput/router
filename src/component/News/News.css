@@ -57,3 +57,27 @@
     color: red;
     text-decoration: underline;
   }
+
+  .l-shape-container {
+    display: grid;
+    grid-template-columns: 50% 50%; /* Two equal columns */
+    grid-template-rows: auto auto; /* Two rows */
+    grid-template-areas:
+      'imagey text'
+      'text text'; /* Second row spans full width for text */
+    gap: 10px; /* Optional gap between items */
+    width: 100%; /* Full width container */
+  }
+  
+  .imagey {
+    grid-area: imagey; /* Correct grid area name */
+    width: 100%; /* Ensure the div fills the grid area */
+    background-color: lightblue; /* Optional background for visualization */
+  }
+  
+  .text {
+    grid-area: text; /* Assign the text grid area */
+    padding: 10px;
+    background-color: lightgray; /* Optional background for visualization */
+  }
+  

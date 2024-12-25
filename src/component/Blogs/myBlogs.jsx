@@ -49,6 +49,13 @@ const UserBlogsPage = () => {
         }
       } catch (error) {
         console.error("Error fetching user blogs:", error);
+        return (
+          <>
+            <div className="text-center flex flex-col gap-5 justify-center p-5 m-3">
+              <img className="h-44 w-auto m-auto" src="404img.png" />
+            </div>
+          </>
+        );
       } finally {
         setLoading(false); // Loading is complete
       }
@@ -120,8 +127,11 @@ const UserBlogsPage = () => {
           </div>
 
           {filteredBlogs.length === 0 ? (
-            <div className="text-center">
-              <p>No blogs found. Start writing your first blog!</p>
+            <div className=" flex justify-center flex-col text-center p-5 ">
+              <img className="h-52 w-52 m-auto" src="/oops_notfound.webp"></img>
+              <p className="text-xl mb-3 ">
+                No blogs found. Start writing your first blog!
+              </p>
               <Link to="/createBlogs">
                 <button className="rounded-lg bg-gray-300 p-2">
                   Write New Blog
@@ -145,7 +155,9 @@ const UserBlogsPage = () => {
                           className="w-full h-full"
                           src={
                             blog.coverImage
-                              ? `http://localhost:8000${blog.coverImage}`
+                              ? `${import.meta.env.VITE_API_URL}${
+                                  blog.coverImage
+                                }`
                               : "coverImg.jpeg"
                           }
                           alt={blog.title}
